@@ -4,6 +4,6 @@ project(APUE_thread)
 
 message("build $SOURCE_FILE")
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -W -g")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -W -g -pthread")
 
 add_executable(test_pthread.o ${SOURCE_FILE})
