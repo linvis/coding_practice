@@ -14,19 +14,19 @@
 #include <string.h>
 /* write */
 #include <unistd.h>
+#include <pthread.h>
 
 
+#define SERV_ADDR "127.0.0.1"
 #define SERV_PORT 1234
 
-int main(int argc, char **argv)
+pthread_mutex_t id_mutex;
+int thread_id = 0;
+
+void *query_date(void *arg)
 {
     int sockfd;
     struct sockaddr_in servaddr;
-
-    if (argc != 2) {
-        printf("type server address\n");
-        exit(0);
-    }
 
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     
@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 
     servaddr.sin_family = AF_INET;
     servaddr.sin_port = htons(SERV_PORT);
-    inet_pton(AF_INET, argv[1], &servaddr.sin_addr);
+    inet_pton(AF_INET, SERV_ADDR, &servaddr.sin_addr);
 
     connect(sockfd, (struct sockaddr *)&servaddr, sizeof(servaddr));
 
@@ -43,7 +43,32 @@ int main(int argc, char **argv)
     char read_buf[128];
 
     read(sockfd, read_buf, 128);
-    printf("current time is %s", read_buf);
+    close(sockfd);
 
-    exit(0);
+    pthread_mutex_lock(&id_mutex);
+
+    printf("thread %3d query time is %s", ++thread_id, read_buf);
+
+    pthread_mutex_unlock(&id_mutex);
+
+    return((void*)0);
+}
+
+/* int main(int argc, char **argv) */
+int main(void)
+{
+
+    /* if (argc != 2) { */
+        /* printf("type server address\n"); */
+        /* exit(0); */
+    /* } */
+
+     pthread_mutex_init(&id_mutex, NULL);
+
+    for (int i = 0; i < 100; i++) {
+        pthread_t pid;
+        pthread_create(&pid, NULL, query_date, NULL);
+    }
+
+    sleep(10);
 }
