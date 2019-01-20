@@ -40,5 +40,10 @@ int main(int argc, char **argv)
 
     write(sockfd, "query date", sizeof("query date"));
 
+    char read_buf[128];
+
+    read(sockfd, read_buf, 128);
+    printf("current time is %s", read_buf);
+
     exit(0);
 }

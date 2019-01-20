@@ -24,6 +24,8 @@ int main(void)
     int listenfd, connfd;
     pid_t childpid;
     socklen_t clilen;
+    time_t cur_time;
+    struct tm *p_tm;
 
     struct sockaddr_in cliaddr, servaddr;
 
@@ -44,10 +46,16 @@ int main(void)
         connfd = accept(listenfd, (struct sockaddr *)&cliaddr, &clilen);
 
         if ((childpid = fork()) == 0) {
-            char buf[128];
+            char buf[128], read_buf[128];
             close(listenfd);
-            read(connfd, buf, 128);
-            printf("%s\n", buf);
+
+            read(connfd, read_buf, 128);
+            time(&cur_time);
+            p_tm = localtime(&cur_time);
+            sprintf(buf, "current time is %s", asctime(p_tm)); 
+
+            write(connfd, buf, 128);
+
             exit(0);
         }
          close(connfd);
