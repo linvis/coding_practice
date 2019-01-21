@@ -65,10 +65,10 @@ int main(void)
 
      pthread_mutex_init(&id_mutex, NULL);
 
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 500; i++) {
         pthread_t pid;
         pthread_create(&pid, NULL, query_date, NULL);
     }
 
-    sleep(10);
+    sleep(2);
 }

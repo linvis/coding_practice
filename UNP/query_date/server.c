@@ -16,6 +16,11 @@
 #include <unistd.h>
 #include <time.h>
 
+/*
+ * If use mac OS as server, please pay attention:
+ * the max count of socket connection is 128 as default.
+ * use 'sudo sysctl -w kern.ipc.somaxconn=512' to change it.
+ */
 
 #define SERV_PORT 1234
 
@@ -39,7 +44,7 @@ int main(void)
 
     bind(listenfd, (struct sockaddr *)&servaddr, sizeof(servaddr));
 
-    listen(listenfd, 100);
+    listen(listenfd, 1000);
 
     for ( ; ; ) {
         clilen = sizeof(cliaddr);
