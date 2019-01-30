@@ -8,7 +8,7 @@
 void bubble_sort(int *data, int size)
 {
     for (int i = 0; i < size; i++) {
-        for (int j = 0; j < (size - 1); j++) {
+        for (int j = 0; j < size - i - 1; j++) {
             if (data[j] > data[j + 1]) {
                 int tmp = data[j];
                 data[j] = data[j + 1];
