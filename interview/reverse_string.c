@@ -9,7 +9,7 @@ char *reverse(char *string)
     if (string == NULL)
 		    return NULL;
     
-		int len = strlen(string);
+    int len = strlen(string);
     
     for (int i = 0; i < len / 2; i++) {
 	      char tmp;
