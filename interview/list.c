@@ -59,6 +59,14 @@ int list_traverse(List_t *head)
 
 }
 
+void list_traverse_from_tail(List_t *head)
+{
+    if (head->next) {
+        list_traverse_from_tail(head->next);
+    }
+    printf("%d ", head->element);
+}
+
 int main(void)
 {
     List_t *head = (List_t*)malloc(sizeof(List_t));
@@ -68,7 +76,13 @@ int main(void)
 
     list_insert(head, 455);
 
-    list_remove(head, 455);
+    /* list_remove(head, 455); */
 
+    printf("traverse list: ");
     list_traverse(head);
+    printf("\n");
+
+    printf("traverse list from tail: ");
+    list_traverse_from_tail(head->next);
+    printf("\n");
 }
