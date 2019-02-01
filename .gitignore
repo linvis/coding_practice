@@ -2,3 +2,4 @@
 *.o
 APUE/thread/build
 APUE/process/build
+.DS_Store
