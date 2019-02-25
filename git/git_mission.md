@@ -182,3 +182,30 @@ git reset --soft commit_id
 git checkout xxx_file
 ```
 
+
+
+## Mission 24 - git remote
+
+```
+# see remote repo name
+git remote -v
+```
+
+
+
+## Mission 27  - git pull
+
+```
+ git pull <remote> <branch>
+```
+
+
+
+## Mission 28 - add remote repo
+
+```
+ git remote add origin https://github.com/githug/githug
+```
+
+
+
