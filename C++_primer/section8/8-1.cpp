@@ -9,9 +9,10 @@ istream& read_file(istream &io)
 {
     string s;
 
+    io.tie(&cout);
+
     while (io >> s)
         cout << s;
-    cout << endl;
 
     return io;
 }
