@@ -15,17 +15,17 @@ using namespace std;
 
 void handler(void)
 {
-    ifstream rfile(); 
+    ifstream rfile; 
     ofstream wfile;
     string line;
 
     cout << "11111" << endl;
 
-    rfile.open("./test.file", "binary");
-    wfile.open("./write.file", "binary");
+    rfile.open("./test.file");
+    wfile.open("./write.file");
 
     while (!rfile.eof()) {
-        getline(rfile, line);
+        getline(rfile, line, '\n');
         wfile << line << flush;
     }
 
