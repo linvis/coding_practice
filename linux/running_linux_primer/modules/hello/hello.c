@@ -13,12 +13,13 @@ static int __init hello_init(void)
 
 static void __exit hello_exit(void)
 {
-    printk("goodbye\n");
+    /* printk("goodbye\n"); */
 }
 
 module_init(hello_init);
-module_exit(hello_init);
+module_exit(hello_exit);
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Lin");
 MODULE_DESCRIPTION("my hello world module");
+MODULE_ALIAS("modhello");

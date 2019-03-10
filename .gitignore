@@ -3,3 +3,9 @@
 APUE/thread/build
 APUE/process/build
 .DS_Store
+
+# linux module
+*.cmd
+*.ko
+*.symvers
+*.order
