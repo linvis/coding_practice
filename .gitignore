@@ -9,3 +9,5 @@ APUE/process/build
 *.ko
 *.symvers
 *.order
+*.mod.c
+*.mod

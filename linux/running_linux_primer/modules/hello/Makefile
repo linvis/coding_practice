@@ -1,5 +1,5 @@
-# BASEINCLUDE ?= /home/parallels/wspace/linux/runninglinuxkernel_4.0-nogitlog
-BASEINCLUDE ?= /lib/modules/`uname -r`/build
+BASEINCLUDE ?= /home/parallels/wspace/linux/runninglinuxkernel_4.0-nogitlog
+# BASEINCLUDE ?= /lib/modules/`uname -r`/build
 
 modhello-objs := hello.o
 obj-m := modhello.o
