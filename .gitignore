@@ -11,3 +11,4 @@ APUE/process/build
 *.order
 *.mod.c
 *.mod
+.ipynb_checkpoints
